@@ -1,37 +1,33 @@
 "use strict";
-var colors = ["red", "green", "yellow"];
-//alternative way of declaring arrays
-/*let names: Array<string> = ["Tom", "Bob", "Alice"];
-console.log(names[1]);  // Bob */
-/*function addTask(task:string):number{
-    let newArray: string[];
-    newArray =  colors.concat(task);
-    let numOfElements: number;
-    numOfElements = newArray.length;
-    return numOfElements;
-}*/
-//push adds and returns the number of elements straight away
+//2a
+var tasks = ["task1", "task2", "task3"];
+//2b push adds and returns the number of elements straight away
 function addTask(task) {
-    var numOfElements = colors.push(task);
-    return numOfElements;
+    var count = tasks.push(task);
+    console.log("Item " + task + " added to array");
+    return count;
 }
-console.log("Count after add: ", addTask("black"));
+console.log(addTask("task4"));
+//2c
 function listAllTasks() {
-    for (var _i = 0, colors_1 = colors; _i < colors_1.length; _i++) {
-        var i = colors_1[_i];
+    for (var _i = 0, tasks_1 = tasks; _i < tasks_1.length; _i++) {
+        var i = tasks_1[_i];
         console.log(i);
     }
+    /*tasks.forEach(function(task){
+        console.log(task)
+    })*/
 }
 listAllTasks();
+//2d
 function deleteTask(task) {
-    var key = task;
-    var index = colors.indexOf(key, 0);
+    var index = tasks.indexOf(task); //start at the index of the elemnt you pass, if this element exists in the array, its position will be greater than -1
     if (index > -1) {
-        colors.splice(index, 1);
+        tasks.splice(index, 1); //start at index of the element, delete the number of elements
+        console.log("We have deleted ", task);
     }
-    return colors.length;
+    return tasks.length;
     ;
 }
-var count = deleteTask("red");
-console.log("Count after delete: ", count);
+console.log("Count after delete: ", deleteTask("task2"));
 listAllTasks();
